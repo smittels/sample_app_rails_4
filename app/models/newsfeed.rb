@@ -1,7 +1,7 @@
-class newsfeed
+class Newsfeed
 #require 'rest_client'
 
-  attr_accessor :id, :title, :summary,
+  attr_accessor :id, :title, :summary
 
   def initialize
     #fetch from http

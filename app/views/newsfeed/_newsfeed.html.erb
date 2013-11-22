@@ -1,4 +1,44 @@
-<%= Hello %>
-<li>
-  <span class="content"><%= newsfeed.content %></span>
-</li>
+<table class="table-striped">
+<tr>
+<th>
+<%= "title" %>
+</th>
+<th>
+<%= "summary" %>
+</th>
+<th>
+<%= "add date" %>
+</th>
+<th>
+<%= "sentiment" %>
+</th>
+<th>
+<%= "url" %>
+</th>
+<th>
+<%= "source" %>
+</th>
+</tr>
+<% JSON.parse(@cnnstr).each do |article| %>
+<tr>
+<td>
+<%= article["title"] %>
+</td>
+<td>
+<%= article["summary"] %>
+</td>
+<td>
+<%= article["add date"] %>
+</td>
+<td>
+<%= article["sentiment"] %>
+</td>
+<td>
+<%= article["url"] %>
+</td>
+<td>
+<%= article["source"] %>
+</td>
+</tr>
+<% end %>
+</table>

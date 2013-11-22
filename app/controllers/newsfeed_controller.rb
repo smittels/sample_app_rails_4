@@ -1,11 +1,33 @@
+
 class NewsfeedController < ApplicationController
   #before_action :signed_in_user, only: [:create, :destroy]
   #before_action :correct_user,   only: :destroy
 
+ #def newsfeed
+ # 
+ #   @newsfeed = Newsfeed.new(params[:id])
+ #   render
+ # end
+
   def create
+    @newsfeed = Newsfeed.new()
+    if defined? @newsfeed.title
+      flash[:success] = "It has a title"
+    else 
+      flash[:failure] = "It does NOT have a title"
+    end
+
+    #@newsfeed = Newsfeed.new(params[:id])
     #@newsfeed = current_user.newsfeed.initiate
-    @newsfeed = Newsfeed.new(params[:id])
-    render
+
+
+    #response = RestClient::Resource.new 'http://www.cnn.com/'
+    response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc?limit=4'
+    var = response.get
+    @cnnstr = var
+    
+
+    render 'newsfeed/_newsfeed'
 
     #if @newsfeed.save
     #  flash[:success] = "Newsfeed created!"
