@@ -11,18 +11,19 @@ class NewsfeedController < ApplicationController
 
   def create
     @newsfeed = Newsfeed.new()
-    if defined? @newsfeed.title
-      flash[:success] = "It has a title"
-    else 
-      flash[:failure] = "It does NOT have a title"
-    end
+    #if defined? @newsfeed.title
+    #  flash[:success] = "It has a title"
+    #else 
+    #  flash[:failure] = "It does NOT have a title"
+    #end
 
     #@newsfeed = Newsfeed.new(params[:id])
     #@newsfeed = current_user.newsfeed.initiate
 
 
     #response = RestClient::Resource.new 'http://www.cnn.com/'
-    response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc?limit=4'
+    #response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc?limit=4'
+    response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc'
     var = response.get
     @cnnstr = var
     

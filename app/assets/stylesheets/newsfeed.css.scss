@@ -1,0 +1,44 @@
+// Place all the styles related to the Newsfeed controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.newsfeed {
+  width: 100%; 
+  table-layout:fixed;
+}
+
+th {
+  background-color:#999999
+}
+
+th.narrow {
+  width: 10%;
+}
+
+th.lessnarrow {
+  width: 15%;
+}
+
+th.medium {
+  width: 20%;
+}
+
+th.wide {
+  width: 50%;
+}
+
+td.wrap {
+  wordwrap: breakword;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
+tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color:lightyellow;
+}

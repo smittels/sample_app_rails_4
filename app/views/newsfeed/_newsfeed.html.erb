@@ -1,44 +1,53 @@
-<table class="table-striped">
+<!--table style="width:100%; table-layout:fixed;"-->
+<table class=newsfeed >
+<thead>
 <tr>
-<th>
+<th class=narrow >
 <%= "title" %>
 </th>
-<th>
+<th class=wide >
 <%= "summary" %>
 </th>
-<th>
+<th class=narrow >
 <%= "add date" %>
 </th>
-<th>
+<th class=narrow >
 <%= "sentiment" %>
 </th>
-<th>
+<th class=narrow >
 <%= "url" %>
 </th>
-<th>
+<th class=narrow > 
 <%= "source" %>
 </th>
 </tr>
+</thead>
+<tbody >
 <% JSON.parse(@cnnstr).each do |article| %>
 <tr>
-<td>
+<td >
+<!--div style="width: 442px; word-wrap: break-word"-->
 <%= article["title"] %>
+<!--/div-->
 </td>
-<td>
+<td style="word-wrap: break-word;" >
+<!--div style="width: 400px; word-wrap: break-word"-->
 <%= article["summary"] %>
+<!--/div-->
 </td>
-<td>
+<td >
 <%= article["add date"] %>
 </td>
-<td>
+<td >
 <%= article["sentiment"] %>
 </td>
-<td>
+<td >
 <%= article["url"] %>
 </td>
-<td>
+<td >
 <%= article["source"] %>
 </td>
 </tr>
 <% end %>
+</tbody>
 </table>
