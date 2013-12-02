@@ -23,7 +23,8 @@ class NewsfeedController < ApplicationController
 
     #response = RestClient::Resource.new 'http://www.cnn.com/'
     #response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc?limit=4'
-    response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc'
+    #response = RestClient::Resource.new 'http://ec2-54-221-143-22.compute-1.amazonaws.com:4001/admin/content/doc'
+    response = RestClient::Resource.new('https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/content/doc', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
     var = response.get
     @cnnstr = var
     
