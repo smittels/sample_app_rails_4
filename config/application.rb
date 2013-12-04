@@ -25,5 +25,8 @@ module SampleApp
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    # For Heroku.  See:  http://guides.rubyonrails.org/asset_pipeline.html#precompiling-assets
+    config.assets.initialize_on_precompile = false
   end
 end
