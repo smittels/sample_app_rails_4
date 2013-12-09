@@ -2,13 +2,16 @@
 <table class=newsfeed >
 <thead>
 <tr>
-<th class=narrow >
+<th class=lessnarrow >
+<%= "id" %>
+</th>
+<th class=lessnarrow >
 <%= "title" %>
 </th>
 <th class=wide >
 <%= "summary" %>
 </th>
-<th class=narrow >
+<th class=lessnarrow >
 <%= "add date" %>
 </th>
 <th class=narrow >
@@ -26,17 +29,16 @@
 <% JSON.parse(@cnnstr).each do |article| %>
 <tr>
 <td >
-<!--div style="width: 442px; word-wrap: break-word"-->
-<%= article["title"] %>
-<!--/div-->
-</td>
-<td style="word-wrap: break-word;" >
-<!--div style="width: 400px; word-wrap: break-word"-->
-<%= article["summary"] %>
-<!--/div-->
+<%= article["id"] %>
 </td>
 <td >
-<%= article["add date"] %>
+<%= article["title"] %>
+</td>
+<td >
+<%= article["summary"] %>
+</td>
+<td >
+<%= article["addDate"] %>
 </td>
 <td >
 <%= article["sentiment"] %>

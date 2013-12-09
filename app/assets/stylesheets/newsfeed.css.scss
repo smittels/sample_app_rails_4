@@ -24,11 +24,12 @@ th.medium {
 }
 
 th.wide {
-  width: 50%;
+  width: 40%;
 }
 
-td.wrap {
-  wordwrap: breakword;
+td {
+  vertical-align: top;
+  word-wrap: break-word;
 }
 
 tr:nth-child(even) {
@@ -36,7 +37,7 @@ tr:nth-child(even) {
 }
 
 tr:nth-child(odd) {
-  background-color: #f9f9f9;
+  background-color: #e0e0e0;
 }
 
 tr:hover {
