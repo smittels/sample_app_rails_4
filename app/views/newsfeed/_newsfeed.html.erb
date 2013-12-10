@@ -26,7 +26,7 @@
 </tr>
 </thead>
 <tbody >
-<% JSON.parse(@cnnstr).each do |article| %>
+<% JSON.parse(@newsdata).each do |article| %>
 <tr>
 <td >
 <%= article["id"] %>
@@ -38,7 +38,18 @@
 <%= article["summary"] %>
 </td>
 <td >
-<%= article["addDate"] %>
+<!-- 2013-11-25T17:23:52+0000 -->
+
+<%begin
+  date = DateTime.strptime(article["addDate"], '%FT%T%z').strftime("%F %T %z")
+rescue ArgumentError
+  date = article["addDate"]
+end
+%>
+
+
+<%= date %>
+
 </td>
 <td >
 <%= article["sentiment"] %>
