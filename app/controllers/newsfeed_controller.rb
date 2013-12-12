@@ -13,8 +13,11 @@ class NewsfeedController < ApplicationController
     @newsfeed = Newsfeed.new()
 
     response = RestClient::Resource.new('https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/content/doc', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
-    var = response.get
-    @newsdata = var
+    @newsdata = response.get
+
+    #response = RestClient::Resource.new('https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/profile', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+
+    #@profiles = response.get
     
 
     render 'newsfeed/_newsfeed'

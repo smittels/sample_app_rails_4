@@ -23,13 +23,17 @@
 <th class=narrow > 
 <%= "source" %>
 </th>
+<th class=lessnarrow> 
+<%= "celebs" %>
+</th>
 </tr>
 </thead>
 <tbody >
 <% JSON.parse(@newsdata).each do |article| %>
 <tr>
 <td >
-<%= article["id"] %>
+<% url = "https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/content/doc/" + article["id"] %>
+<%= link_to article["id"], url %>
 </td>
 <td >
 <%= article["title"] %>
@@ -60,7 +64,14 @@ end
 <td >
 <%= article["source"] %>
 </td>
+<td >
+<% article["celebrityMentions"].each do |celebrityMention| %>
+<li><%= celebrityMention["celebrityName"]+" "+celebrityMention["sentiment"].to_s%></li>
+<% end %>
+</td>
 </tr>
 <% end %>
 </tbody>
 </table>
+
+<!--%= profiles %-->
