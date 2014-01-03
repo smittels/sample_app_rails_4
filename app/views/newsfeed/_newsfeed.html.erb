@@ -1,3 +1,17 @@
+
+
+<%="Hello"%>
+
+<%= form_tag('/newsfeed', :method=>'post', :multipart => true) do %>
+ <p>
+   Subject:<br />
+   <%= text_field_tag "subject" %>
+ </p>
+ <p>
+   <%= submit_tag 'Submit' %>
+ </p>
+<% end %>
+
 <!--table style="width:100%; table-layout:fixed;"-->
 <table class=newsfeed >
 <thead>
@@ -8,23 +22,20 @@
 <th class=lessnarrow >
 <%= "title" %>
 </th>
-<th class=wide >
-<%= "summary" %>
-</th>
 <th class=lessnarrow >
 <%= "add date" %>
 </th>
-<th class=narrow >
-<%= "sentiment" %>
+<th class=lessnarrow >
+<%= "article sentiment" %>
+</th>
+<th class=wide> 
+<%= "celebs' name [rating] sentiment (id)" %>
+</th>
+<th class=wide >
+<%= "summary" %>
 </th>
 <th class=narrow >
-<%= "url" %>
-</th>
-<th class=narrow > 
 <%= "source" %>
-</th>
-<th class=lessnarrow> 
-<%= "celebs" %>
 </th>
 </tr>
 </thead>
@@ -32,14 +43,11 @@
 <% JSON.parse(@newsdata).each do |article| %>
 <tr>
 <td >
-<% url = "https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/content/doc/" + article["id"] %>
+<% url = "https://54.197.232.114:4002/admin/content/doc/" + article["id"] %>
 <%= link_to article["id"], url %>
 </td>
 <td >
-<%= article["title"] %>
-</td>
-<td >
-<%= article["summary"] %>
+<%= link_to article["title"], article["url"] %>
 </td>
 <td >
 <!-- 2013-11-25T17:23:52+0000 -->
@@ -59,15 +67,23 @@ end
 <%= article["sentiment"] %>
 </td>
 <td >
-<%= article["url"] %>
-</td>
-<td >
-<%= article["source"] %>
-</td>
-<td >
 <% article["celebrityMentions"].each do |celebrityMention| %>
-<li><%= celebrityMention["celebrityName"]+" "+celebrityMention["sentiment"].to_s%></li>
+  <li> <%= celebrityMention["celebrityName"]%>
+  <%= " [" %>
+  <% JSON.parse(@celebrityRating).each do |celebrityRating| %>
+    <% if celebrityMention["celebrityId"] == celebrityRating["celebrityId"] %>
+      <%= celebrityRating["rating"].to_s %>
+    <% end %>
+  <% end %>
+  <%= "]" %>
+  <%= celebrityMention["sentiment"].to_s+" ("+ celebrityMention["celebrityId"].to_s+")"%></li>
 <% end %>
+</td>
+<td >
+<%= article["summary"] %>
+</td>
+<td >
+<%= article["source"]%>
 </td>
 </tr>
 <% end %>

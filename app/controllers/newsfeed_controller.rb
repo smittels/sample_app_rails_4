@@ -12,10 +12,30 @@ class NewsfeedController < ApplicationController
   def create
     @newsfeed = Newsfeed.new()
 
-    response = RestClient::Resource.new('https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/content/doc', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+    # You should use host ec2-54-197-232-114.compute-1.amazonaws.com 
+    # (or IP address 54.197.232.114). This is an Elastic IP so will not change. 
+
+    # There are two services and each service is listening on two ports, 
+    # one HTTP and one HTTPS. The HTTP ports are IP restricted 
+    # while the HTTPS ports are not.
+
+    # The content service is listening on 4001 (HTTP) and 4002 (HTTPS)
+    # The profile service is listening on 4003 (HTTP) and 4004 (HTTPS)
+
+    # You should use the HTTPS port if you can because that's not IP restricted
+    # but currently we're using a self-signed certificate. 
+    # We're in the process of getting a "real" cert. 
+
+
+    response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
     @newsdata = response.get
 
-    #response = RestClient::Resource.new('https://ec2-54-221-143-22.compute-1.amazonaws.com:4002/admin/profile', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+
+    response = RestClient::Resource.new('https://54.197.232.114:4004/admin/profile/1/celebrityRating', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+    @celebrityRating = response.get
+
+
+    #response = RestClient::Resource.new('https://54.197.232.114:4004/admin/profile', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
 
     #@profiles = response.get
     
