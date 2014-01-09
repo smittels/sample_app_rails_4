@@ -1,6 +1,11 @@
 
 
-<!--<%="Hello"%>
+
+<%="This tool uses profileId 1."%>
+<p>
+<%="To change the rating of a celebrity, use 
+https://54.197.232.114:4004/admin/profile/1/celebrityRating/{celebrityId}" %> 
+<!--
 
 <%= form_tag('/newsfeed', :method=>'post', :multipart => true) do %>
  <p>
@@ -30,6 +35,9 @@
 </th>
 <th class=wide> 
 <%= "celebs' name [rating] sentiment (id)" %>
+</th>
+<th class=wide> 
+<%= "juicyness" %>
 </th>
 <th class=wide >
 <%= "summary" %>
@@ -78,6 +86,9 @@ end
   <%= "]" %>
   <%= celebrityMention["sentiment"].to_s+" ("+ celebrityMention["celebrityId"].to_s+")"%></li>
 <% end %>
+</td>
+<td>
+<%= article["juiciness"] %>
 </td>
 <td >
 <%= article["summary"] %>
