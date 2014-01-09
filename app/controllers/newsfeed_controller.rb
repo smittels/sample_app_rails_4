@@ -27,7 +27,7 @@ class NewsfeedController < ApplicationController
     # We're in the process of getting a "real" cert. 
 
 
-    response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+    response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1&view=fullwithjuicyness', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
     @newsdata = response.get
 
 
