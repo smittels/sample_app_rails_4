@@ -15,4 +15,7 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/newsfeed', to: 'newsfeed#create', via: 'get'
+  match '/hello', to: 'newsfeed#hello', via: 'get'
+  match '/update', to: 'newsfeed#update', via: 'get'
+  match '/rateCelebrity', to: 'newsfeed#rateCelebrity', via: 'get'
 end

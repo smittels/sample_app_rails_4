@@ -8,7 +8,8 @@ table.newsfeed {
 }
 
 th {
-  background-color:#999999
+  background-color:#999999;
+  padding:3px;
 }
 
 th.narrow {
@@ -30,6 +31,7 @@ th.wide {
 td {
   vertical-align: top;
   word-wrap: break-word;
+  padding:3px;
 }
 
 tr:nth-child(even) {

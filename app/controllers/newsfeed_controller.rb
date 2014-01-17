@@ -43,6 +43,26 @@ class NewsfeedController < ApplicationController
     render 'newsfeed/_newsfeed'
 
   end
+
+  def hello
+    @hello="original text"
+  end
+
+  def update
+    @hello = "replacement text"
+    render :partial => "update_h"
+  end
+
+  def rateCelebrity
+    profileAPI = RestClient::Resource.new('https://54.197.232.114:4004/admin/', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+    @ret = profileAPI['profile/1/celebrityRating/4633'].put({'rating' => params[:therank]}.to_json, :content_type => 'application/json')
+
+    #render :partial => "_update_rank1", "locals" => {:therank => params[:therank], :thearticle => params[:thearticle], :thecelebrity => params[:thecelebrity]}
+
+    redirect_to (:back)
+    #render(:update) { |page| page.reload }
+     
+  end
   
   def destroy
     @newsfeed.destroy
