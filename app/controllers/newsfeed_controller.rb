@@ -55,7 +55,10 @@ class NewsfeedController < ApplicationController
 
   def rateCelebrity
     profileAPI = RestClient::Resource.new('https://54.197.232.114:4004/admin/', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
-    @ret = profileAPI['profile/1/celebrityRating/4633'].put({'rating' => params[:therank]}.to_json, :content_type => 'application/json')
+    string = 'profile/1/celebrityRating/'+params[:thecelebrity]
+    @ret = profileAPI[string].put({'rating' => params[:therank]}.to_json, :content_type => 'application/json')
+    #@ret = profileAPI['profile/1'].put({'rating' => params[:therank]}.to_json, 'celebrityRating' => params[:thecelebrity], :content_type => 'application/json')
+    #@ret = profileAPI['profile/1/celebrityRating/4633'].put({'rating' => params[:therank]}.to_json, :content_type => 'application/json')
 
     #render :partial => "_update_rank1", "locals" => {:therank => params[:therank], :thearticle => params[:thearticle], :thecelebrity => params[:thecelebrity]}
 
