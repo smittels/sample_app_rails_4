@@ -47,7 +47,7 @@
 <% JSON.parse(@newsdata).each do |article| %>
 <tr>
 <td >
-<% url = "https://54.197.232.114:4002/admin/content/doc/" + article["id"].to_s %>
+<% url = "https://54.197.232.114:4002/admin/content/doc/#{article["id"]}" %>
 <%= link_to article["id"], url %>
 </td>
 <td >
@@ -83,6 +83,7 @@ end
 <td >
 <% article["celebrityMentions"].each do |celebrityMention| %>
   <li> <%= celebrityMention["celebrityName"]%>
+  <br>
   <%= " [" %>
 
   <% found = 0 %>
@@ -93,7 +94,7 @@ end
         <% if (i == celebrityRating["rating"]) %>
           <b><%= i %></b>
         <% else %>
-          <div id="article"+id+"celeb"+celebrityMention["celebrityId"]+"link"+i>
+          <div style="display: inline" id="article"+id+"celeb"+celebrityMention["celebrityId"]+"link"+i >
             <%= render :partial => "rank1_div", :locals => { :therank => i, :thecelebrity => celebrityMention["celebrityId"]} %>
           </div>
         <% end %>
@@ -102,13 +103,14 @@ end
   <% end %>
   <% if found == 0 %>
     <% for i in -1..4 %>
-      <div id="article"+id+"celeb"+celebrityMention["celebrityId"]+"link"+i>
+      <div style="display: inline" id="article"+id+"celeb"+celebrityMention["celebrityId"]+"link"+i>
         <%= render :partial => "rank1_div", :locals => { :therank => i, :thecelebrity => celebrityMention["celebrityId"]} %>
       </div>
     <% end %>
   <% end %>
 
   <%= "]" %>
+  <br>
   <%= celebrityMention["sentiment"].to_s+" ("+ celebrityMention["celebrityId"].to_s+")"%></li>
 <% end %>
 </td>
