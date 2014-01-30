@@ -26,8 +26,16 @@ class NewsfeedController < ApplicationController
     # but currently we're using a self-signed certificate. 
     # We're in the process of getting a "real" cert. 
 
+    if params[:sort] == "pubDate" 
 
-    response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1&view=fullwithjuicyness', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+      response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1&view=fullwithjuicyness&orderBy=pubDate', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+
+    else 
+ 
+      response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1&view=fullwithjuicyness', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+
+    end
+
     @newsdata = response.get
 
 

@@ -12,6 +12,14 @@
 
 
 <%="This tool uses profileId 1."%>
+<br>
+<%= link_to "sort by juicyness", {:action => "create", :controller => "newsfeed", :sort => "juicy" } %>
+
+<br>
+
+<%= link_to "sort by pubDate", {:action => "create", :controller => "newsfeed", :sort => "pubDate" } %>
+
+
 
 <!--table style="width:100%; table-layout:fixed;"-->
 <table class=newsfeed >
