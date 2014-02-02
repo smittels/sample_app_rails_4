@@ -1,4 +1,10 @@
+<%require 'uri'%>
 
+<%=@theurl.inspect%>
+<p>
+<%= link_to "Manage Document List Requests", "/document_list_requests" %>
+
+<br>
 
 <!--<%= form_tag('/newsfeed', :method=>'post', :multipart => true) do %>
  <p>
@@ -11,14 +17,12 @@
 <% end %>-->
 
 
-<%="This tool uses profileId 1."%>
-<br>
-<%= link_to "sort by juicyness", {:action => "create", :controller => "newsfeed", :sort => "juicy" } %>
+<!--<%= link_to "sort by juicyness", {:action => "create", :controller => "newsfeed", :sort => "juicy" } %>
 
 <br>
 
 <%= link_to "sort by pubDate", {:action => "create", :controller => "newsfeed", :sort => "pubDate" } %>
-
+-->
 
 
 <!--table style="width:100%; table-layout:fixed;"-->

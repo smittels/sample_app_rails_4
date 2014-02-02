@@ -1,0 +1,55 @@
+<h1>Listing document_list_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Celebrityids</th>
+      <th>Limit</th>
+      <th>View</th>
+      <th>Orderby</th>
+      <th>Profileid</th>
+      <th>Star0factor</th>
+      <th>Star1factor</th>
+      <th>Star2factor</th>
+      <th>Star3factor</th>
+      <th>Star4factor</th>
+      <th>Docsentimentfactor</th>
+      <th>Celebsentimentfactor</th>
+      <th>Unblockthreshold</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @document_list_requests.each do |document_list_request| %>
+      <tr>
+        <td align=center><%= document_list_request.id%></td>
+        <td align=center><%= document_list_request.celebrityIds %></td>
+        <td align=center><%= document_list_request.limit %></td>
+        <td align=center><%= document_list_request.view %></td>
+        <td align=center><%= document_list_request.orderBy %></td>
+        <td align=center><%= document_list_request.profileId %></td>
+        <td align=center><%= document_list_request.star0Factor %></td>
+        <td align=center><%= document_list_request.star1Factor %></td>
+        <td align=center><%= document_list_request.star2Factor %></td>
+        <td align=center><%= document_list_request.star3Factor %></td>
+        <td align=center><%= document_list_request.star4Factor %></td>
+        <td align=center><%= document_list_request.docSentimentFactor %></td>
+        <td align=center><%= document_list_request.celebSentimentFactor %></td>
+        <td align=center><%= document_list_request.unblockThreshold %></td>
+        <td align=center><%= link_to 'Show', document_list_request %></td>
+        <td align=center><%= link_to 'Edit', edit_document_list_request_path(document_list_request) %></td>
+        <td><%= link_to 'Destroy', document_list_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Document List Request', new_document_list_request_path %>
+<p>
+<%= link_to "View Newsfeed", "/newsfeed" %>

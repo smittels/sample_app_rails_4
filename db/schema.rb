@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130315230445) do
+ActiveRecord::Schema.define(version: 20140202223644) do
+
+  create_table "document_list_requests", force: true do |t|
+    t.string   "celebrityIds"
+    t.integer  "limit"
+    t.string   "view"
+    t.string   "orderBy"
+    t.string   "profileId"
+    t.string   "star0Factor"
+    t.string   "star1Factor"
+    t.string   "star2Factor"
+    t.string   "star3Factor"
+    t.string   "star4Factor"
+    t.string   "docSentimentFactor"
+    t.string   "celebSentimentFactor"
+    t.string   "unblockThreshold"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"

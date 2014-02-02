@@ -1,3 +1,4 @@
+require 'uri' 
 
 class NewsfeedController < ApplicationController
   #before_action :signed_in_user, only: [:create, :destroy]
@@ -26,20 +27,30 @@ class NewsfeedController < ApplicationController
     # but currently we're using a self-signed certificate. 
     # We're in the process of getting a "real" cert. 
 
-    if params[:sort] == "pubDate" 
-
-      response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1&view=fullwithjuicyness&orderBy=pubDate', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
-
-    else 
- 
-      response = RestClient::Resource.new('https://54.197.232.114:4002/admin/content/doc?limit=100&profileId=1&view=fullwithjuicyness', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
-
+    if params[:dlrid] 
+      dlrid=params[:dlrid]
+    else
+      dlrid=1
     end
+
+    
+    @dlr= DocumentListRequest.find(dlrid)
+    attrs = @dlr.attributes
+    query_attrs1 = attrs.except("id")
+    query_attrs2 = query_attrs1.except("created_at")
+    query_attrs = query_attrs2.except("updated_at")
+    query_str=query_attrs.to_query
+    
+    url = "https://54.197.232.114:4002/admin/content/doc?#{query_str}"
+    @theurl=url
+
+    response = RestClient::Resource.new(url, 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
 
     @newsdata = response.get
 
+    url="https://54.197.232.114:4004/admin/profile/#{dlrid}/celebrityRating"
 
-    response = RestClient::Resource.new('https://54.197.232.114:4004/admin/profile/1/celebrityRating', 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
+    response = RestClient::Resource.new(url, 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
     @celebrityRating = response.get
 
 

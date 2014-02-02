@@ -1,0 +1,1 @@
+json.extract! @document_list_request, :celebrityIds, :limit, :view, :orderBy, :profileId, :star0Factor, :star1Factor, :star2Factor, :star3Factor, :star4Factor, :docSentimentFactor, :celebSentimentFactor, :unblockThreshold, :created_at, :updated_at

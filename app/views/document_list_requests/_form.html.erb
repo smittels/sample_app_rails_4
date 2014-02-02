@@ -1,0 +1,69 @@
+<%= form_for(@document_list_request) do |f| %>
+  <% if @document_list_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document_list_request.errors.count, "error") %> prohibited this document_list_request from being saved:</h2>
+
+      <ul>
+      <% @document_list_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :celebrityIds %><br>
+    <%= f.text_field :celebrityIds %>
+  </div>
+  <div class="field">
+    <%= f.label :limit %><br>
+    <%= f.number_field :limit %>
+  </div>
+  <div class="field">
+    <%= f.label :view %><br>
+    <%= f.number_field :view %>
+  </div>
+  <div class="field">
+    <%= f.label :orderBy %><br>
+    <%= f.text_field :orderBy %>
+  </div>
+  <div class="field">
+    <%= f.label :profileId %><br>
+    <%= f.text_field :profileId %>
+  </div>
+  <div class="field">
+    <%= f.label :star0Factor %><br>
+    <%= f.text_field :star0Factor %>
+  </div>
+  <div class="field">
+    <%= f.label :star1Factor %><br>
+    <%= f.text_field :star1Factor %>
+  </div>
+  <div class="field">
+    <%= f.label :star2Factor %><br>
+    <%= f.text_field :star2Factor %>
+  </div>
+  <div class="field">
+    <%= f.label :star3Factor %><br>
+    <%= f.text_field :star3Factor %>
+  </div>
+  <div class="field">
+    <%= f.label :star4Factor %><br>
+    <%= f.text_field :star4Factor %>
+  </div>
+  <div class="field">
+    <%= f.label :docSentimentFactor %><br>
+    <%= f.text_field :docSentimentFactor %>
+  </div>
+  <div class="field">
+    <%= f.label :celebSentimentFactor %><br>
+    <%= f.text_field :celebSentimentFactor %>
+  </div>
+  <div class="field">
+    <%= f.label :unblockThreshold %><br>
+    <%= f.text_field :unblockThreshold %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
