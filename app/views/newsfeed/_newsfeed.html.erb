@@ -1,9 +1,10 @@
 <%require 'uri'%>
 
-<%=@theurl.inspect%>
 <p>
 <%= link_to "Manage Document List Requests", "/document_list_requests" %>
-
+<p>
+<%="Current Parameters:  "%>
+<%=@theurl.inspect%>
 <br>
 
 <!--<%= form_tag('/newsfeed', :method=>'post', :multipart => true) do %>

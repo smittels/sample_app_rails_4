@@ -48,7 +48,7 @@ class NewsfeedController < ApplicationController
 
     @newsdata = response.get
 
-    url="https://54.197.232.114:4004/admin/profile/#{dlrid}/celebrityRating"
+    url="https://54.197.232.114:4004/admin/profile/#{query_attrs['profileId']}/celebrityRating"
 
     response = RestClient::Resource.new(url, 'OkDJYTKTxeNO5SAbykpC', 'xPiCCVq#JKPLqcFILHgOXBU7Y#IrXVw2O3C%8Y^K')
     @celebrityRating = response.get

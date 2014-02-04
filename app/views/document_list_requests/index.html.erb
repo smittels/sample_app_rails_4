@@ -1,8 +1,15 @@
 <h1>Listing document_list_requests</h1>
 
+
+<p>
+<%= link_to "API Documentation", "http://services.lexalytics.com:8090/display/MA/Content+Service+API" %>
+
+<p>
+
 <table>
   <thead>
     <tr>
+      <th>Select</th>
       <th>ID</th>
       <th>Celebrityids</th>
       <th>Limit</th>
@@ -26,6 +33,7 @@
   <tbody>
     <% @document_list_requests.each do |document_list_request| %>
       <tr>
+        <td align=center><%= link_to "Select", "/newsfeed?dlrid=#{document_list_request.id}" %></td>
         <td align=center><%= document_list_request.id%></td>
         <td align=center><%= document_list_request.celebrityIds %></td>
         <td align=center><%= document_list_request.limit %></td>
@@ -52,4 +60,4 @@
 
 <%= link_to 'New Document List Request', new_document_list_request_path %>
 <p>
-<%= link_to "View Newsfeed", "/newsfeed" %>
+<!--<%= link_to "View Newsfeed", "/newsfeed" %>-->
